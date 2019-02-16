@@ -1,0 +1,72 @@
+Jan  1 20:01:02 10.11.1.111 waf: *   << Request  >> 14465762  
+Jan  1 20:01:02 10.11.1.111 waf: -   Begin          req 14465761 rxreq
+Jan  1 20:01:02 10.11.1.111 waf: -   Timestamp      Start: 1546369260.646271 0.000000 0.000000
+Jan  1 20:01:02 10.11.1.111 waf: -   Timestamp      Req: 1546369260.646271 0.000000 0.000000
+Jan  1 20:01:02 10.11.1.111 waf: -   ReqStart       0.0.0.0 48355
+Jan  1 20:01:02 10.11.1.111 waf: -   ReqMethod      GET
+Jan  1 20:01:02 10.11.1.111 waf: -   ReqURL        
+/orieskova
+Jan  1 20:01:02 10.11.1.111 waf: -   ReqProtocol    HTTP/1.1
+Jan  1 20:01:02 10.11.1.111 waf: -   ReqHeader      Host: www.ministerstvo-cokolady.sk
+Jan  1 20:01:02 10.11.1.111 waf: -   ReqHeader      Connection: keep-alive
+Jan  1 20:01:02 10.11.1.111 waf: -   ReqHeader      Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Jan  1 20:01:02 10.11.1.111 waf: -   ReqHeader      From: googlebot(at)googlebot.com
+Jan  1 20:01:02 10.11.1.111 waf: -   ReqHeader      User-Agent: Mozilla/5.0 (Linux; Android 6.0.1; Nexus 5X Build/MMB29P) AppleWebKit/537.36
+(KHTML, like Gecko) Chrome/41.0.2272.96 Mobile Safari/537.36 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)
+Jan  1 20:01:02 10.11.1.111 waf: -   ReqHeader      Accept-Encoding: gzip,deflate,br
+Jan  1 20:01:02 10.11.1.111 waf: -   ReqHeader      X-Forwarded-For: 0.0.0.0
+Jan  1 20:01:02 10.11.1.111 waf: -   VCL_call       RECV
+Jan  1 20:01:02 10.11.1.111 waf: -   ReqHeader      X-VSF-Actual-IP: 0.0.0.0
+Jan  1 20:01:02 10.11.1.111 waf: -   ReqHeader      X-VSF-ClientIP: 0.0.0.0
+Jan  1 20:01:02 10.11.1.111 waf: -   ReqHeader      X-VSF-Method: GET
+Jan  1 20:01:02 10.11.1.111 waf: -   ReqHeader      X-VSF-Proto: HTTP/1.1
+Jan  1 20:01:02 10.11.1.111 waf: -   ReqHeader      X-VSF-UA: Mozilla/5.0 (Linux; Android 6.0.1; Nexus 5X Build/MMB29P) AppleWebKit/537.36
+(KHTML, like Gecko) Chrome/41.0.2272.96 Mobile Safari/537.36 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)
+Jan  1 20:01:02 10.11.1.111 waf: -   ReqHeader      X-VSF-URL:
+/orieskova
+Jan  1 20:01:02 10.11.1.111 waf: -   Error          vsf.normalize: No input
+Jan  1 20:01:02 10.11.1.111 waf: -   ReqHeader      X-VSF-Body: 
+Jan  1 20:01:02 10.11.1.111 waf: -   ReqHeader      X-VSF-Client: [0.0.0.0]
+www.ministerstvo-cokolady.sk/orieskova
+Jan  1 20:01:02 10.11.1.111 waf: -   ReqUnset       Accept-Encoding: gzip,deflate,br
+Jan  1 20:01:02 10.11.1.111 waf: -   ReqHeader      Accept-Encoding: gzip
+Jan  1 20:01:02 10.11.1.111 waf: -   ReqHeader      X-VSF-Module: sql
+Jan  1 20:01:02 10.11.1.111 waf: -   ReqUnset       X-VSF-Module: sql
+Jan  1 20:01:02 10.11.1.111 waf: -   ReqHeader      X-VSF-Module: xss
+Jan  1 20:01:02 10.11.1.111 waf: -   ReqHeader      TARGET_URL: /orieskova
+Jan  1 20:01:02 10.11.1.111 waf: -   ReqUnset       X-VSF-Module: xss
+Jan  1 20:01:02 10.11.1.111 waf: -   ReqHeader      X-VSF-Module: demo
+Jan  1 20:01:02 10.11.1.111 waf: -   ReqUnset       X-VSF-Module: demo
+Jan  1 20:01:02 10.11.1.111 waf: -   ReqHeader      X-VSF-Module: php
+Jan  1 20:01:02 10.11.1.111 waf: -   ReqHeader      X-VSF-RuleName: Remote site in URL parameter
+Jan  1 20:01:02 10.11.1.111 waf: -   ReqHeader      X-VSF-RuleID: 100
+Jan  1 20:01:02 10.11.1.111 waf: -   ReqHeader      X-VSF-RuleInfo: Generic check for remote code inclusion from external sites
+Jan  1 20:01:02 10.11.1.111 waf: -   ReqHeader      X-VSF-Severity: 1
+Jan  1 20:01:02 10.11.1.111 waf: -   ReqHeader      X-VSF-Rule: php-100
+Jan  1 20:01:02 10.11.1.111 waf: -   ReqHeader      X-VSF-Response: Naughty, not nice!
+Jan  1 20:01:02 10.11.1.111 waf: -   VCL_return     synth
+Jan  1 20:01:02 10.11.1.111 waf: -   VCL_call       HASH
+Jan  1 20:01:02 10.11.1.111 waf: -   VCL_return     lookup
+Jan  1 20:01:02 10.11.1.111 waf: -   Timestamp      Process: 1546369260.693710 0.047439 0.047439
+Jan  1 20:01:02 10.11.1.111 waf: -   RespHeader     Date: Tue, 01 Jan 2019 19:01:00 GMT
+Jan  1 20:01:02 10.11.1.111 waf: -   RespHeader     Server: Varnish
+Jan  1 20:01:02 10.11.1.111 waf: -   RespHeader     X-Varnish: 14465762
+Jan  1 20:01:02 10.11.1.111 waf: -   RespProtocol   HTTP/1.1
+Jan  1 20:01:02 10.11.1.111 waf: -   RespStatus     801
+Jan  1 20:01:02 10.11.1.111 waf: -   RespReason     Unknown HTTP Status
+Jan  1 20:01:02 10.11.1.111 waf: -   RespReason     Rejected
+Jan  1 20:01:02 10.11.1.111 waf: -   VCL_call       SYNTH
+Jan  1 20:01:02 10.11.1.111 waf: -   VCL_Log        security.vcl alert xid:14465762 HTTP/1.1 [php-100][0.0.0.0]
+Jan  1 20:01:02 10.11.1.111 waf: -   RespStatus     403
+Jan  1 20:01:02 10.11.1.111 waf: -   RespReason     Forbidden
+Jan  1 20:01:02 10.11.1.111 waf: -   RespReason     Naughty, not nice!
+Jan  1 20:01:02 10.11.1.111 waf: -   RespHeader     Content-Type: text/html; charset=utf-8
+Jan  1 20:01:02 10.11.1.111 waf: -   RespHeader     Retry-After: 5
+Jan  1 20:01:02 10.11.1.111 waf: -   VCL_return     deliver
+Jan  1 20:01:02 10.11.1.111 waf: -   RespHeader     Content-Length: 279
+Jan  1 20:01:02 10.11.1.111 waf: -   Storage        malloc Transient
+Jan  1 20:01:02 10.11.1.111 waf: -   Debug          'RES_MODE 2'
+Jan  1 20:01:02 10.11.1.111 waf: -   RespHeader     Connection: keep-alive
+Jan  1 20:01:02 10.11.1.111 waf: -   Timestamp      Resp: 1546369260.693850 0.047579 0.000139
+Jan  1 20:01:02 10.11.1.111 waf: -   ReqAcct        842 0 842 211 279 490
+Jan  1 20:01:02 10.11.1.111 waf: -   End
