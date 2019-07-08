@@ -11,13 +11,19 @@ class default_oneline(Run.SyslogRun.SyslogRun,Parse.RegexParse.RegexParse,Send.Z
         super().__init__()
 
     def parse(self, line):
+        ret = True
         event = {}
         event["log"] = line
                 
         event = self.regex_parse(event, line)       
 
         if all(x in event.keys() for x in self.keys):
-            return [event]
+            if "id" in event.keys():
+				ret = self.check_exclude(event["id"])
+				ret = self.check_include(event["id"])
+
+            if ret:
+                return [event]
 
         return []
 

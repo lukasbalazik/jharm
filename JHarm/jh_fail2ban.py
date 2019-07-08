@@ -11,6 +11,7 @@ class fail2ban(Run.SyslogRun.SyslogRun,Parse.Fail2Ban.Fail2Ban,Send.ZeroMQSend.Z
 
 
     def parse(self, line):
+        ret = True
         event = {}
 
         for key, value in self.regs.items():
@@ -22,7 +23,12 @@ class fail2ban(Run.SyslogRun.SyslogRun,Parse.Fail2Ban.Fail2Ban,Send.ZeroMQSend.Z
                 event["process"] = match.group("PROG")
 
         if event.keys():
-            return [event]
+            if "id" in event.keys():
+				ret = self.check_exclude(event["id"])
+				ret = self.check_include(event["id"])
+
+            if ret:
+                return [event]
 
         return []
 

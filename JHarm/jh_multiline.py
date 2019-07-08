@@ -12,6 +12,7 @@ class default_multiline(Run.SyslogRun.SyslogRun,Parse.RegexParse.RegexParse,Send
 
 
     def parse(self, line):
+        ret = True
         ID_found = self.regs['multiline_id'].match(line)
         if ID_found == None:
             return []
@@ -25,7 +26,12 @@ class default_multiline(Run.SyslogRun.SyslogRun,Parse.RegexParse.RegexParse,Send
         self.event[ID] = self.regex_parse(self.event[ID], line)
 
         if all(x in self.event[ID].keys() for x in self.keys):
-            return [self.event.pop(ID)]
+            if "id" in event[ID].keys():
+				ret = self.check_exclude(event[ID]["id"])
+				ret = self.check_include(event[ID]["id"])
+
+            if ret:
+                return [self.event.pop(ID)]
 
         return []
 
