@@ -27,8 +27,8 @@ class default_multiline(Run.SyslogRun.SyslogRun,Parse.RegexParse.RegexParse,Send
 
         if all(x in self.event[ID].keys() for x in self.keys):
             if "id" in event[ID].keys():
-				ret = self.check_exclude(event[ID]["id"])
-				ret = self.check_include(event[ID]["id"])
+                ret = self.check_exclude(event[ID]["id"])
+                ret = self.check_include(event[ID]["id"])
 
             if ret:
                 return [self.event.pop(ID)]

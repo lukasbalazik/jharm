@@ -19,8 +19,8 @@ class default_oneline(Run.SyslogRun.SyslogRun,Parse.RegexParse.RegexParse,Send.Z
 
         if all(x in event.keys() for x in self.keys):
             if "id" in event.keys():
-				ret = self.check_exclude(event["id"])
-				ret = self.check_include(event["id"])
+                ret = self.check_exclude(event["id"])
+                ret = self.check_include(event["id"])
 
             if ret:
                 return [event]

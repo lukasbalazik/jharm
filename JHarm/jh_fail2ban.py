@@ -24,8 +24,8 @@ class fail2ban(Run.SyslogRun.SyslogRun,Parse.Fail2Ban.Fail2Ban,Send.ZeroMQSend.Z
 
         if event.keys():
             if "id" in event.keys():
-				ret = self.check_exclude(event["id"])
-				ret = self.check_include(event["id"])
+                ret = self.check_exclude(event["id"])
+                ret = self.check_include(event["id"])
 
             if ret:
                 return [event]
