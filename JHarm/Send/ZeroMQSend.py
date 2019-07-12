@@ -19,7 +19,8 @@ class ZeroMQSend(AnyToJson.AnyToJson):
 
         data = json.dumps(data)
         context = zmq.Context()
-        socket = context.socket(zmq.SUB)
+        socket = context.socket(zmq.REQ)
         socket.connect("tcp://"+self.out_host+":"+self.out_port)
         socket.send_string(data)
-
+        message = socket.recv()
+        print(message)
