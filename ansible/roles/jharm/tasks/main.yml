@@ -7,6 +7,9 @@
   copy:
     src: "/tmp/jharm/JHarm/"
     dest: "/usr/share/JHarm/"
+- name: install pyzmq
+  pip:
+    name: pyzmq
 - name: copy JHarm configuration to etc
   copy:
     src: "/tmp/jharm/configurations/JHarm/*"
