@@ -83,20 +83,20 @@ Regex section defines regexes for parsing data, posibility of use:
 
 There is already multiple defined configs:
 
-| Name                 | Plugin          | Create event from                   |      |
-| -------------------- | --------------- | ----------------------------------- | ---- |
-| apparmor.conf        | jh_oneline      | Apparmor DENNIED log                |      |
-| checkpoint_ips.conf  | jh_multiline    | Checkpoint IPS alerts               |      |
-| waf_varnish_vsf.conf | jh_waf_varnish  | Varnish log without line identifier |      |
-| fail2ban.conf        | jh_fail2ban     | Log using fail2ban regexes          |      |
-| esa.conf             | jh_multiline    | ESA logs via MID identifier         |      |
-| ips.conf             | jh_oneline      | Cisco IPS alerts                    |      |
-| opsec.conf           | jh_oneline      | Checkpoint OPSEC events             |      |
-| paloalto.conf        | jh_oneline      | PaloAlto alert                      |      |
-| suricata.conf        | jh_oneline      | Suricata alert                      |      |
-| waf.conf             | jh_waf_jsonload | WAF Varnish json                    |      |
-| windows_sa.conf      | jh_oneline      | Windows security log                |      |
-| wsa.conf             | jh_oneline      | Cisco Web Security Appliance        |      |
+| Name                 | Plugin          | Create event from                   |
+| -------------------- | --------------- | ----------------------------------- |
+| apparmor.conf        | jh_oneline      | Apparmor DENNIED log                |
+| checkpoint_ips.conf  | jh_multiline    | Checkpoint IPS alerts               |
+| waf_varnish_vsf.conf | jh_waf_varnish  | Varnish log without line identifier |
+| fail2ban.conf        | jh_fail2ban     | Log using fail2ban regexes          |
+| esa.conf             | jh_multiline    | ESA logs via MID identifier         |
+| ips.conf             | jh_oneline      | Cisco IPS alerts                    |
+| opsec.conf           | jh_oneline      | Checkpoint OPSEC events             |
+| paloalto.conf        | jh_oneline      | PaloAlto alert                      |
+| suricata.conf        | jh_oneline      | Suricata alert                      |
+| waf.conf             | jh_waf_jsonload | WAF Varnish json                    |
+| windows_sa.conf      | jh_oneline      | Windows security log                |
+| wsa.conf             | jh_oneline      | Cisco Web Security Appliance        |
 
 
 ### Parse
