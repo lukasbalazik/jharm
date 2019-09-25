@@ -18,9 +18,10 @@ class fail2ban(Run.SyslogRun.SyslogRun,Parse.Fail2Ban.Fail2Ban,Send.ZeroMQSend.Z
             match = value.match(line)
             if match:
                 event["log"] = line
+                event["source"] = self.source
                 event["src_ip"] = match.group("HOST")
                 event["dst_ip"] = match.group("FROM")
-                event["process"] = match.group("PROG")
+                event["signature"] = match.group("PROG")
 
         if event.keys():
             if "id" in event.keys():

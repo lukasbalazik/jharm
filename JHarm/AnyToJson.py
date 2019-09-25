@@ -38,13 +38,13 @@ class AnyToJson(ABC):
             self.include = self.conf.get('detection', 'include').split(',')
 
 
-    def check_exclude(self, event):
-        if event["id"] in self.exclude:
+    def check_exclude(self, event_id):
+        if event_id in self.exclude:
             return False
 
 
-    def check_include(self, event):
-        if event["id"] not in self.include and self.include != []:
+    def check_include(self, event_id):
+        if event_id not in self.include and self.include != []:
             return False
          
         

@@ -17,7 +17,10 @@ class waf_jsonload(Run.SyslogRun.SyslogRun,Parse.JsonLoad.JsonLoad,Send.ZeroMQSe
         if not event:
             return []
 
-        event["waf_log"] = event.pop("log")
+        try:
+            event["waf_log"] = event.pop("log")
+        except:
+            pass
         event["log"] = line
 
         if all(x in event.keys() for x in self.keys):

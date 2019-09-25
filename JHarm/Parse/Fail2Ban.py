@@ -12,6 +12,7 @@ class Fail2Ban(AnyToJson.AnyToJson):
 
         self.files_readed = []
 
+        self.source = self.conf.get("detection", "source")
         self.prepared_regex["HOST"] = self.conf.get("config", "host_regex")
         self.prepared_regex["__prefix_line"] = self.conf.get("config", "prefix_regex")
 
