@@ -1,0 +1,17 @@
+- name: clone JHarm repository
+  git:
+    clone: yes
+    dest: "/tmp/jharm"
+    repo: "https://github.com/lukasbalazik123/jharm.git"
+- name: copy src codes to usr share
+  copy:
+    src: "/tmp/jharm/JHarm/"
+    dest: "/usr/share/JHarm/"
+- name: copy JHarm configuration to etc
+  copy:
+    src: "/tmp/jharm/configurations/JHarm/*"
+    dest: "/etc/JHarm/"
+- name: copy syslog-ng configuration to /etc/syslog-ng/conf.d/
+  copy:
+    src: "/tmp/jharm/configurations/syslog-ng/conf.d/*"
+    dest: "/etc/syslog-ng/conf.d/"
