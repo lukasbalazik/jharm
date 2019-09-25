@@ -10,11 +10,21 @@
 - name: install pyzmq
   pip:
     name: pyzmq
+
 - name: copy JHarm configuration to etc
   copy:
-    src: "/tmp/jharm/configurations/JHarm/*"
+    src: "/tmp/jharm/configurations/JHarm/{{ item.name }}"
     dest: "/etc/JHarm/"
+  with_items: "{{ enabled_configs }}"
+
 - name: copy syslog-ng configuration to /etc/syslog-ng/conf.d/
   copy:
-    src: "/tmp/jharm/configurations/syslog-ng/conf.d/*"
+    src: "/tmp/jharm/configurations/syslog-ng/conf.d/{{ item.name }}"
     dest: "/etc/syslog-ng/conf.d/"
+  with_items: "{{ enabled_configs }}"
+
+- name: create startup daemons
+  template:
+    src: "daemon.conf"
+    dest: "/etc/init.d/jh_{{ item.name }}"
+  with_items: "{{ enabled_configs }}"
