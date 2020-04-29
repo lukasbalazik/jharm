@@ -17,10 +17,10 @@ class RegexParse(AnyToJson.AnyToJson):
             self.regs[k] = re.compile(base + v)
 
     def regex_parse(self, event, line):
-        event["log"] += line
+        event["extra.additional"] += line
         
         if "source" not in event:
-            event["source"] = self.conf.get("detection", "source")
+            event["classification.identifier"] = self.conf.get("detection", "source")
 
         for key in self.regs.keys():
             match = self.regs[key].match(line)        
@@ -29,7 +29,7 @@ class RegexParse(AnyToJson.AnyToJson):
 
             for k, v in match.groupdict().items():
                 if k not in event:
-                    event[k] = v
+                    event[k.replace("_",".")] = v
 
         return event
 

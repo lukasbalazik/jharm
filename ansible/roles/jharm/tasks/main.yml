@@ -1,26 +1,31 @@
+- name: create directory for jharm
+  file:
+    path: /opt/jharm/
+    state: directory
+
 - name: clone JHarm repository
   git:
     clone: yes
-    dest: "/tmp/jharm"
+    dest: "/opt/jharm/"
     repo: "https://github.com/lukasbalazik123/jharm.git"
-- name: copy src codes to usr share
-  copy:
-    src: "/tmp/jharm/JHarm/"
-    dest: "/usr/share/JHarm/"
+
+- name: install pip3
+  package:
+    name: python3-pip
+
 - name: install pyzmq
   pip:
     name: pyzmq
 
-- name: copy JHarm configuration to etc
-  copy:
-    src: "/tmp/jharm/configurations/JHarm/{{ item.name }}"
-    dest: "/etc/JHarm/"
-  with_items: "{{ enabled_configs }}"
+- name: install syslog-ng
+  package:
+    name: syslog-ng
 
 - name: copy syslog-ng configuration to /etc/syslog-ng/conf.d/
   copy:
-    src: "/tmp/jharm/configurations/syslog-ng/conf.d/{{ item.name }}"
+    src: "/opt/jharm/configurations/syslog-ng/conf.d/03jh_{{ item.name }}.conf"
     dest: "/etc/syslog-ng/conf.d/"
+    remote_src: true
   with_items: "{{ enabled_configs }}"
 
 - name: create startup daemons

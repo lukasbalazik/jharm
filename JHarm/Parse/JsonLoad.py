@@ -26,10 +26,10 @@ class JsonLoad(AnyToJson.AnyToJson):
         match = self.regs["context"].match(line)        
         if not match:
             return None
-        event["context"] = match.group(1)
+        event["extra.context"] = match.group(1)
 
-        if "source" not in event:
-            event["source"] = self.conf.get("detection", "source")
+        if "classification.identifier" not in event:
+            event["classification.identifier"] = self.conf.get("detection", "source")
 
         return event
 

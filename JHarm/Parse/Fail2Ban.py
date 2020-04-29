@@ -28,7 +28,7 @@ class Fail2Ban(AnyToJson.AnyToJson):
 
 
     def readfile(self, fl):
-        with open("/etc/fail2ban/filter.d/"+fl) as f:
+        with open("/etc/fail2ban/filter.d/"+fl, errors='replace') as f:
             lines = f.readlines()
 
         goto = ""

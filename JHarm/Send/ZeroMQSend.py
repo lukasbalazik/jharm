@@ -22,6 +22,8 @@ class ZeroMQSend(AnyToJson.AnyToJson):
         socket = context.socket(zmq.REQ)
         socket.setsockopt( zmq.RCVTIMEO, 500 )
         socket.connect("tcp://"+self.out_host+":"+self.out_port)
+        print("IDEM SENDOVAT")
         socket.send_string(data)
+        print("SENDNUTE")
         message = socket.recv()
         print(message)

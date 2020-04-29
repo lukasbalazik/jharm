@@ -3,10 +3,10 @@
 import AnyToJson
 import Run.SyslogRun
 import Parse.JsonLoad
-import Send.ZeroMQSend
+import Send.ElasticSend
 
 
-class waf_jsonload(Run.SyslogRun.SyslogRun,Parse.JsonLoad.JsonLoad,Send.ZeroMQSend.ZeroMQSend,AnyToJson.AnyToJson):
+class waf_jsonload(Run.SyslogRun.SyslogRun,Parse.JsonLoad.JsonLoad,Send.ElasticSend.ElasticSend,AnyToJson.AnyToJson):
 
     def __init__(self):
         super().__init__()
@@ -18,14 +18,19 @@ class waf_jsonload(Run.SyslogRun.SyslogRun,Parse.JsonLoad.JsonLoad,Send.ZeroMQSe
             return []
 
         try:
-            event["waf_log"] = event.pop("log")
+            event["extra.waf_log"] = event.pop("log")
         except:
             pass
-        event["log"] = line
+        event["extra.additional"] = line
+            
+        event["source.ip"] = event.pop("ip")
+        event["destination.fqdn"] = event.pop("host")
+        event["destination.url"] = event["destination.fqdn"]+event.pop("url")
+        event["classification.taxonomy"] = event.pop("vsf_rule_name")
+        event["extra.rule.id"] = event.pop("vsf_rule_id")
 
         if all(x in event.keys() for x in self.keys):
-            event["src_ip"] = event.pop("ip")
-            event["signature"] = event.pop("vsf_rule_name")
+
             if "id" in event.keys():
                 ret = self.check_exclude(event["id"])
                 ret = self.check_include(event["id"])

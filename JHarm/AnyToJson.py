@@ -1,6 +1,9 @@
 import sys
 import configparser
 import logging
+import json
+import datetime
+import time
 
 from abc import ABC
 from abc import abstractmethod
@@ -12,7 +15,10 @@ class AnyToJson(ABC):
         self.conf.read(sys.argv[1])
         self.set_exclude()
         self.set_include()
-        self.setup_logging()
+        self.setup_logging() 
+        self.received_lines = 0
+        self.incident_count = 0
+        self.source = self.conf.get('detection', 'source')
 
 
     def setup_logging(self):
@@ -47,7 +53,21 @@ class AnyToJson(ABC):
         if event_id not in self.include and self.include != []:
             return False
          
-        
+
+    def create_stats(self):
+        while True:
+            output = {}
+            output["Received Lines"] = self.received_lines
+            output["Incidents"] = self.incident_count
+            output["Timestamp"] = datetime.datetime.fromtimestamp(time.time()).strftime('%d.%m.%Y %H:%M:%S')
+
+            file='/run/jh_'+self.source+'.stats' 
+            with open(file, 'w') as f:
+                f.write(json.dumps(output))
+
+            self.received_lines = 0
+            self.incident_count = 0
+            time.sleep(600)
 
     @abstractmethod
     def run(self):

@@ -1,6 +1,7 @@
 import AnyToJson
 import time
 import socket
+import threading
 
 class SyslogRun(AnyToJson.AnyToJson):
     def __init__(self, ):
@@ -9,10 +10,12 @@ class SyslogRun(AnyToJson.AnyToJson):
         in_host = self.conf.get('connection', 'input_host')
         in_port = self.conf.getint('connection', 'input_port')
 
+        threading.Thread(target=self.create_stats, args=()).start()
         self.listen_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         self.listen_socket.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
         self.listen_socket.bind(( in_host, in_port ))
         self.listen_socket.listen(1)
+    
 
     def run(self):
         while True:
@@ -30,8 +33,10 @@ class SyslogRun(AnyToJson.AnyToJson):
                 if chunk != '':
                     data = rows.pop()
                 for row in rows:
+                    self.received_lines += 1
                     jsonvals = self.parse(row.strip("\r\n"))
                     for jsonval in jsonvals:
+                        self.incident_count += 1
                         self.send(jsonval)
 
                 if chunk == '':

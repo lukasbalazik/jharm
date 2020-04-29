@@ -1,3 +1,7 @@
 - hosts: jharm
   roles:
   - jharm
+  vars:
+    - enabled_configs:
+      - name: "suricata"
+        script: "jh_oneline.py"
