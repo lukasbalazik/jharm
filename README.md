@@ -99,6 +99,23 @@ There is already multiple defined configs:
 | wsa.conf             | jh_oneline      | Cisco Web Security Appliance        |
 
 
+### Stats
+JHarm is creating stat file for every running plugin. Stats file are located in /run/jh\_[name of plugin].stats. Example of stat file:
+
+```shell
+$ cat /run/jh_suricata.stats
+
+{"Received Lines": 415, "Incidents": 405, "Timestamp": "30.04.2020 11:29:32"
+}
+```
+
+Explanation of structure:
+- Received Lines - shows all lines that was accepted by jharm plugin
+- Incidents - shows all lines that matched rules and created event
+- Timestamp - last timestamp of update
+
+Refreshing of every plugin stat file is 10 minutes.
+
 ### Parse
 Parse is directory with different types of parsing.
 
