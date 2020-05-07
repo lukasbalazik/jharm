@@ -25,5 +25,5 @@ class ElasticSend(AnyToJson.AnyToJson):
 
         data = json.dumps(data)
         print(data)
-        req = requests.post('http://'+self.out_host+':'+self.out_port+'/events/_doc',data=data,headers={"content-type":"application/json"})
+        req = requests.post('http://'+self.out_host+':'+self.out_port+'/events-'+date.today().strftime('%Y.%m.%d')+'/_doc',data=data,headers={"content-type":"application/json"})
         print(req.text)
