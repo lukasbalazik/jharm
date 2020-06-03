@@ -21,9 +21,9 @@ class ElasticSend(AnyToJson.AnyToJson):
         if type(data) is not dict:
             return False
 
-        data["time.source"] = (datetime.today() - timedelta(hours=1)).strftime('%Y-%m-%dT%H:%M:%S')
+        data["time.source"] = (datetime.today() - timedelta(hours=2)).strftime('%Y-%m-%dT%H:%M:%S')
 
         data = json.dumps(data)
         print(data)
-        req = requests.post('http://'+self.out_host+':'+self.out_port+'/events-'+date.today().strftime('%Y.%m.%d')+'/_doc',data=data,headers={"content-type":"application/json"})
+        req = requests.post('http://'+self.out_host+':'+self.out_port+'/events-'+datetime.today().strftime('%Y.%m.%d')+'/_doc',data=data,headers={"content-type":"application/json"})
         print(req.text)
